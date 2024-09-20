@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    int opcao;
+    float temperatura, convertida;
+
+    do { // Para o menu ser repetido até o usuario pedir a opção de sair
+        printf("\nMenu:\n");
+        printf("1. Converter de Celsius para Fahrenheit\n");
+        printf("2. Converter de Fahrenheit para Celsius\n");
+        printf("3. Sair\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+
+    
+        switch (opcao) { // processar a escolha do usuário
+            case 1:
+                // conversão - Celsius > Fahrenheit
+                printf("Digite a temperatura em Celsius: ");
+                scanf("%f", &temperatura);
+                convertida = (temperatura * 9 / 5) + 32; // formula - google
+                printf("A temperatura em Fahrenheit é: %.2f\n", convertida);
+                break;
+
+            case 2:
+                // conversão - Fahrenheit > Celsius
+                printf("Digite a temperatura em Fahrenheit: ");
+                scanf("%f", &temperatura);
+                convertida = (temperatura - 32) * 5 / 9; // formula - google
+                printf("A temperatura em Celsius é: %.2f\n", convertida);
+                break;
+
+            case 3:
+                printf("Saindo do programa.\n");
+                break;
+
+            default:
+                printf("Opcao invalida. Tente novamente.\n");
+        }
+    } while (opcao != 3); 
+    return 0;
+}
