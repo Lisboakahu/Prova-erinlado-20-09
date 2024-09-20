@@ -1,28 +1,54 @@
-//   14. Elabore um programa que exiba uma mensagem de boas-vindas baseada no
-//   turno do dia. O usuário deve informar o turno usando um número (1 para manhã, 2
-//   para tarde, 3 para noite). O programa deve exibir uma mensagem apropriada para
-//   cada turno e um erro para entradas inválidas. 
-
-
+// 14. Escreva um programa que apresente um menu com as seguintes opções:
+// 1. Adição.
+// 2. Subtração.
+// 3. Multiplicação.
+// 4. Divisão.
+// 5. Sair.
+// O programa deve solicitar dois números e realizar a operação escolhida. Deve
+// continuar exibindo o menu até que o usuário escolha a opção de sair. (0.2 ponto)
+// Entrada: escolha da operação e dois números.
+// Saída: resultado da operação.
 
 #include <stdio.h>
 
-int main() {
-    int turno;
+int main()
+{
+    int opcao;
+    float valor1;
+    float valor2;
+    float resultado;
+    int continuar = 0; // 0 para sim, 1 para nao
 
-    printf("Informe o turno do dia (1- Manhã, 2- Tarde, 3- Noite): ");
-    scanf("%d", &turno);
+    while (continuar == 0) // laço de repetição que repete o comando para o usuário até que ele selecione "sair"
+    {
+        printf("Escolha a opcao: \n1. Adicao\n2. Subtracao\n3. Multiplicacao\n4. Divisao\n5. Sair\n");
+        scanf("%d", &opcao);
 
-    if (turno == 1) {   
-        printf("Bom dia!\n");
-    } else if (turno == 2) {
-        printf("Boa tarde!\n");
-    } else if (turno == 3) {
-        printf("Boa noite!\n"); 
-    } else {
-        printf("Erro: Turno inválido!\n");
+        if (opcao <= 4) // condição que testa qual opção foi escolhida, solicita os valores e imprime o resultado
+        {
+            printf("Insira os valores ");
+            scanf("%f %f", &valor1, &valor2);
+            if (opcao == 1) // adição
+            {
+                resultado = valor1 + valor2;
+            }
+            else if (opcao == 2) // subtração
+            {
+                resultado = valor1 - valor2;
+            }
+            else if (opcao == 3) // multiplicação
+            {
+                resultado = valor1 * valor2;
+            }
+            else if (opcao == 4) // divisão
+            {
+                resultado = valor1 / valor2;
+            }
+            printf("O resultado eh %.1f\n", resultado);
+        }
+
+        if (opcao == 5) // opção para sair e parar o programa
+        {
+            continuar = 1;
+        }
     }
-
-    return 0;
-
-}   
