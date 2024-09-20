@@ -1,0 +1,57 @@
+//   15. Crie um programa que converta um valor monetário entre três moedas: real
+//   (BRL), dólar (USD) e euro (EUR). O usuário deve informar a moeda de origem, a
+//   moeda de destino e o valor a ser convertido. As taxas de conversão são as
+//   seguintes:
+//   ● 1 USD = 5.30 BRL
+//   ● 1 EUR = 6.20 BRL
+//   ● 1 BRL = 0.19 USD
+//   ● 1 BRL = 0.16 EUR
+//   O programa deve calcular e exibir o valor convertido. Se a moeda informada não for
+//   reconhecida, o programa deve exibir uma mensagem de erro.
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int moeda_origem, moeda_destino;
+    float valor, valor_convertido;
+
+    printf("Escolha a moeda de origem:\n");
+    printf("1 - BRL\n2 - USD\n3 - EUR\n");
+    scanf("%d", &moeda_origem);
+
+    printf("Escolha a moeda de destino:\n");
+    printf("1 - BRL\n2 - USD\n3 - EUR\n");
+    scanf("%d", &moeda_destino);
+
+    printf("Informe o valor a ser convertido: ");
+    scanf("%f", &valor);
+
+    if (moeda_origem == 1 && moeda_destino == 2) { // BRL para USD - && = conjunção E
+        valor_convertido = valor * 0.19;
+        printf("Valor convertido: %.2f USD\n", valor_convertido);
+    } else if (moeda_origem == 1 && moeda_destino == 3) { // BRL para EUR
+        valor_convertido = valor * 0.16;
+        printf("Valor convertido: %.2f EUR\n", valor_convertido);
+    } else if (moeda_origem == 2 && moeda_destino == 1) { // USD para BRL
+        valor_convertido = valor * 5.30;
+        printf("Valor convertido: %.2f BRL\n", valor_convertido);
+    } else if (moeda_origem == 3 && moeda_destino == 1) { // EUR para BRL
+        valor_convertido = valor * 6.20;
+        printf("Valor convertido: %.2f BRL\n", valor_convertido);
+    } else if (moeda_origem == 2 && moeda_destino == 3) { // USD para EUR
+        valor_convertido = (valor * 5.30) / 6.20;
+        printf("Valor convertido: %.2f EUR\n", valor_convertido);
+    } else if (moeda_origem == 3 && moeda_destino == 2) { // EUR para USD
+        valor_convertido = (valor * 6.20) / 5.30;
+        printf("Valor convertido: %.2f USD\n", valor_convertido);
+    } else if (moeda_origem == moeda_destino) { // Caso de mesma moeda
+        printf("As moedas de origem e destino são as mesmas.\n");
+    } else { // Caso de erro
+        printf("Erro: Moeda inválida!\n");
+    }
+
+    return 0;
+}
