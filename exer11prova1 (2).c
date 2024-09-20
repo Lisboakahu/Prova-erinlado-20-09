@@ -1,39 +1,42 @@
-//   11. Crie uma função que receba o valor de um produto e calcule o valor do desconto
-//   de ICMS com base nas faixas de preço do produto:
-//   ● Até R$ 1.000,00: Desconto de 5%
-//   ● De R$ 1.000,01 até R$ 5.000,00: Desconto de 10%
-//   ● Acima de R$ 5.000,00: Desconto de 15%
-//   Use a estrutura condicional aninhada para aplicar o desconto corretamente. 
-
+// Escreva um programa que peça ao usuário para inserir as notas de 8 alunos e
+// classifique cada nota em conceitos: A (nota entre 9 e 10), B (nota entre 7 e 8.9), C
+// (nota entre 5 e 6.9), D (nota entre 3 e 4.9) ou F (nota abaixo de 3). (0.4 ponto)
+// Entrada: 8 notas.
+// Saída: conceito correspondente para cada nota.
 
 #include <stdio.h>
 
-float descontoICMS(float x) { // x = valor produto
+int main()
+{
+    float nota;
+    int indice = 1;
+    int quantAlunos = 8;
 
-	float desconto;
-	if (x <= 1000.00) {
-		desconto = x * 0.95;    // 0.95 Fator de Multiplicação
-	} else if (x <= 5000.00) {
-		desconto = x * 0.90;
-	} else {
-		desconto= x * 0.85;
-	}
+    while (indice <= quantAlunos)
+    {
+        printf("Insira a nota ");
+        scanf("%f", &nota);
 
-	return desconto;
-}
-
-int main() {
-	float x, resultado; // resultado = valor final
-
-
-	printf("Digite o valor do produto: R$ ");
-	scanf("%f", &x);
-
-
-	resultado = descontoICMS(x);  
-
-
-	printf("O valor do produto com o desconto de ICMS C): R$ %.2f\n", resultado);
-
-	return 0;
+        if (nota >= 9 && nota <= 10)
+        {
+            printf("Conceito A\n");
+        }
+        else if (nota >= 7 && nota <= 8.9)
+        {
+            printf("Conceito B\n");
+        }
+        else if (nota >= 5 && nota <= 6.9)
+        {
+            printf("Conceito C\n");
+        }
+        else if (nota >= 3 && nota <= 4.9)
+        {
+            printf("Conceito D\n");
+        }
+        else if (nota < 3)
+        {
+            printf("Conceito E\n");
+        }
+        indice++;
+    }
 }
